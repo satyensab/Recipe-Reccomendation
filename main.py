@@ -7,7 +7,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import ast
-
+from nltk.stem import WordNetLemmatizer
 
 # Ingredient Image Model Prediction
 def model_prediction(ing_image):
