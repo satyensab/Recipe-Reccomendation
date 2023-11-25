@@ -4,3 +4,4 @@ streamlit==1.28.2
 tensorflow==2.14.0
 scikit-learn==1.2.1
 astroid==2.11.7
+nltk==3.7
