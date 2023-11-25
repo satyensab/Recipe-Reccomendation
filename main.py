@@ -30,21 +30,20 @@ def model_prediction(ing_image):
     pred = model.predict(img_arr)
     return class_label_arr[np.argmax(pred)]
 
-lemmatizer = WordNetLemmatizer()
-
-def pre_process(ing):
-    ing_arr = ing.split(", ")
-    cleaned_ing = [lemmatizer.lemmatize(ing) for ing in ing_arr]
-    ing_str = ', '.join(cleaned_ing)
-    return ing_str
+# lemmatizer = WordNetLemmatizer()
+# def pre_process(ing):
+#     ing_arr = ing.split(", ")
+#     cleaned_ing = [lemmatizer.lemmatize(ing) for ing in ing_arr]
+#     ing_str = ', '.join(cleaned_ing)
+#     return ing_str
     
 # Recommendation Function
 def recommend_recipe(ingredients, datframe):
     vectorizer = TfidfVectorizer(ngram_range=(1, 2), tokenizer=lambda x: x.split(', '))
     ing_data = vectorizer.fit_transform(datframe['Cleaned_Ingredients'])
 
-    cleaned_ing = pre_process(ingredients)
-    input_vec = vectorizer.transform([cleaned_ing])
+    # cleaned_ing = pre_process(ingredients)
+    input_vec = vectorizer.transform([ingredients])
     
     similarity = cosine_similarity(input_vec, ing_data).flatten()
     top_idx = np.argpartition(similarity, -5)[-5:]
