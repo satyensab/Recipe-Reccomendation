@@ -33,7 +33,7 @@ def model_prediction(ing_image):
 
 # Recommendation Function
 def recommend_recipe(ingredients, datframe):
-    vectorizer = TfidfVectorizer(ngram_range=(1, 1), tokenizer=lambda x: x.split(', '))
+    vectorizer = TfidfVectorizer(ngram_range=(1, 2), tokenizer=lambda x: x.split(', '))
     ing_data = vectorizer.fit_transform(datframe['Cleaned_Ingredients'])
 
     input_vec = vectorizer.transform([ingredients])
